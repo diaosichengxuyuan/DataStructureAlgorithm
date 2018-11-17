@@ -1,6 +1,6 @@
 package com.diaosichengxuyuan.dsa.datastructure.tree;
 
-import com.diaosichengxuyuan.dsa.datastructure.tree.impl.MyBinarySortTree;
+import com.diaosichengxuyuan.dsa.datastructure.tree.impl.GeneralBinarySortTree;
 import org.junit.Test;
 
 /**
@@ -11,7 +11,7 @@ public class TestBinarySortTree {
 
     @Test
     public void test() {
-        BinarySortTree<Integer> tree = new MyBinarySortTree<>();
+        BinarySortTree<Integer> tree = new GeneralBinarySortTree<>();
         tree.insert(Integer.valueOf(20));
         tree.insert(Integer.valueOf(10));
         tree.insert(Integer.valueOf(40));
@@ -27,6 +27,8 @@ public class TestBinarySortTree {
 
         System.out.println("构造树完成");
         System.out.println(tree.treeStructurePrint());
+
+        System.out.println();
         System.out.println("树大小" + tree.size());
 
         System.out.println();
@@ -55,7 +57,6 @@ public class TestBinarySortTree {
 
         System.out.println();
         tree.clear();
-        System.out.println("清空树");
-        System.out.println("树大小 " + tree.size());
+        System.out.println("清空树,树大小 " + tree.size());
     }
 }

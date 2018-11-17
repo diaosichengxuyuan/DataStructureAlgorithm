@@ -9,16 +9,18 @@ import java.util.List;
 import java.util.Queue;
 
 /**
+ * 二叉排序树 算法请参考本人写的：https://github.com/diaosichengxuyuan/DataStructureAlgorithm/issues/1
+ *
  * @author liuhaipeng
  * @date 2018/11/9
  */
-public class MyBinarySortTree<E extends Comparable<E>> extends AbstractBinarySortTree<E> {
+public class GeneralBinarySortTree<E extends Comparable<E>> extends AbstractBinarySortTree<E> {
 
     private Node<E> root = null;
 
     private int size = 0;
 
-    public MyBinarySortTree() {
+    public GeneralBinarySortTree() {
     }
 
     @Override
@@ -38,7 +40,7 @@ public class MyBinarySortTree<E extends Comparable<E>> extends AbstractBinarySor
     @Override
     public void insert(E e) {
         if(e == null) {
-            throw new RuntimeException();
+            throw new NullPointerException();
         }
 
         size++;
@@ -70,7 +72,7 @@ public class MyBinarySortTree<E extends Comparable<E>> extends AbstractBinarySor
     @Override
     public void delete(E e) {
         if(e == null) {
-            throw new RuntimeException();
+            throw new NullPointerException();
         }
 
         Pair<Node, Node> pair = findNodeAndParentNode(e, root);
@@ -302,7 +304,7 @@ public class MyBinarySortTree<E extends Comparable<E>> extends AbstractBinarySor
     /**
      * Node节点只有孩子，没有父亲，减少了维护成本，但是如果需要使用父节点就要自己用变量保存
      */
-    private static class Node<E extends Comparable<E>> {
+    private static class Node<E> {
 
         /**
          * 元素
