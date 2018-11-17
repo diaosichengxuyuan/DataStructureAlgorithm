@@ -33,21 +33,24 @@ public class TestMultiwaySortTree {
         System.out.println("构造树完成，树大小：" + tree.size());
 
         System.out.println();
-        System.out.println("构造树完成，按树结构打印：");
+        System.out.println("构造树完成，按层打印");
+        System.out.println(tree.levelPrint());
 
         System.out.println();
         System.out.println("构造树完成，按顺序打印：" + tree.sortPrint());
 
         tree.delete(Integer.valueOf(20));
         System.out.println();
-        System.out.println("删除20，按树结构打印：");
+        System.out.println("删除20，按层打印");
+        System.out.println(tree.levelPrint());
 
         System.out.println();
         System.out.println("删除20，按顺序打印：" + tree.sortPrint());
 
         tree.delete(Integer.valueOf(18));
         System.out.println();
-        System.out.println("删除18，按树结构打印：");
+        System.out.println("删除18，按层打印");
+        System.out.println(tree.levelPrint());
 
         System.out.println();
         System.out.println("删除18，按顺序打印：" + tree.sortPrint());

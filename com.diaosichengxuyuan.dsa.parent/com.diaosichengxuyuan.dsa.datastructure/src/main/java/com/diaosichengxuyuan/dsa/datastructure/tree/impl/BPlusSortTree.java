@@ -1,5 +1,9 @@
 package com.diaosichengxuyuan.dsa.datastructure.tree.impl;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * B+树 只考虑元素值不重复的情况 算法请参考本人写的：https://github.com/diaosichengxuyuan/DataStructureAlgorithm/issues/6
  *
@@ -258,7 +262,37 @@ public class BPlusSortTree<E extends Comparable<E>> extends AbstractMultiwaySort
 
     @Override
     public String levelPrint() {
-        throw new UnsupportedOperationException();
+        StringBuilder builder = new StringBuilder();
+
+        if(root == null) {
+            return builder.toString();
+        }
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        Node<E> currentNode;
+        Node<E> currentLastNode = root;
+        Node<E> nextLastNode = null;
+
+        while(!queue.isEmpty()) {
+            currentNode = queue.poll();
+            builder.append(currentNode + " ");
+
+            for(int i = 0; i < currentNode.n; i++) {
+                Node<E> childNode = currentNode.entries[i].childNode;
+                if(childNode != null) {
+                    queue.offer(childNode);
+                    nextLastNode = childNode;
+                }
+            }
+
+            if(currentNode == currentLastNode) {
+                currentLastNode = nextLastNode;
+                builder.append("\n");
+            }
+        }
+
+        return builder.toString();
     }
 
     @Override
@@ -559,6 +593,11 @@ public class BPlusSortTree<E extends Comparable<E>> extends AbstractMultiwaySort
 
             return node1;
         }
+
+        @Override
+        public String toString() {
+            return Arrays.toString(Arrays.copyOf(entries, n));
+        }
     }
 
     /**
@@ -584,6 +623,12 @@ public class BPlusSortTree<E extends Comparable<E>> extends AbstractMultiwaySort
         private Entry(E element) {
             this.element = element;
         }
+
+        @Override
+        public String toString() {
+            return element == null ? "" : element.toString();
+        }
+
     }
 
     private Node<E> findLeafNode(E e) {
@@ -594,4 +639,5 @@ public class BPlusSortTree<E extends Comparable<E>> extends AbstractMultiwaySort
 
         return currentNode;
     }
+
 }
