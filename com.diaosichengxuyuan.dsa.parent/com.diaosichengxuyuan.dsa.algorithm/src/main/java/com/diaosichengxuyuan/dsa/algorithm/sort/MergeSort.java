@@ -1,4 +1,4 @@
-package com.diaosichengxuyuan.dsa.datastructure.sort;
+package com.diaosichengxuyuan.dsa.algorithm.sort;
 
 import java.util.Arrays;
 

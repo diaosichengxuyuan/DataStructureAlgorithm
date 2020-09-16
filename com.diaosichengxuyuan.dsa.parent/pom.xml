@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>com.diaosichengxuyuan.dsa.datastructure</module>
+        <module>com.diaosichengxuyuan.dsa.algorithm</module>
     </modules>
 
     <properties>
